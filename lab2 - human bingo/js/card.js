@@ -38,7 +38,10 @@ export default class Card {
       // try to call the save() method on the Bingo class
        Bingo.checkWinner();
        Bingo.save();
-         
+      //if more winners than 5 then dont mark as done
+        if (document.querySelectorAll(".bingo__card--done").length > 5) {
+            e.target.classList.remove("bingo__card--done");
+        }
     });
   }
 }
