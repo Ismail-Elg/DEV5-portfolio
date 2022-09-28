@@ -14,7 +14,6 @@ export default class Card {
     console.log(target);
     // hint: use class .bingo__card--done
   }
-
   render(counter) {
     // rendering the card to the screen is done by building up a string of HTML
     // after that, we append the HTML to the DOM - check the index.html file to see what structure to use
