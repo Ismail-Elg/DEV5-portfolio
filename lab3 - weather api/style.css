@@ -120,10 +120,10 @@ button:focus-visible {
 
 }
 .above{
-  background-color: #70CBF4;
+
   color: #092A5E;
   position: absolute;
-  top: 25%;
+  top: 18%;
   left: 0;
   
   display: flex;
@@ -134,6 +134,7 @@ button:focus-visible {
   font-weight: bold;
   padding: 0.5rem;
   z-index: 5;
+  line-height: 2;
   
 }
 .icon{
@@ -143,5 +144,11 @@ button:focus-visible {
   left: 0;
   width: 40px;
 }
+.logo{
+  position: absolute;
+  top: 0;
+  right: 0;
 
+  
+}
 
