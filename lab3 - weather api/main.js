@@ -5,7 +5,7 @@ import Pexel from './src/pexel';
 import Flight from './src/flight';
 
 let image = "";
-let city = "";
+let cityNumber = "";
 let cityName = "";
 let check = () =>{
   
@@ -68,25 +68,39 @@ function addContent() {
 
   switch(weatherCode) {
     case 200||201||202||230||231||232:
-      image = "mountains";
+      image = "Bhutan";
+      cityName = "Bhutan";
+      cityNumber = "PBH";
       break;
     case 300||301||302||500||501||502||511||520||521||522:
       image = "hotel reception";
+      cityName = "London";
+      cityNumber = "LON";
       break;
     case 600||601||602||610||611||612||621||622:
       image = "everest";
+      cityName = "Kathmandu";
+      cityNumber = "KTM";
       break;
     case 700||711||721||731||741||751||761||762||771||781:
       image = "beach";
+      cityName = "Kavalla";
+      cityNumber = "KVA";
       break;
     case 800:
-      image = "spain";
+      image = "spain2";
+      cityName = "Madrid";
+      cityNumber = "MAD";
       break;
     case 801||802||803||804:
       image = "cloudy city";
+      cityName = "Washington";
+      cityNumber = "BWI";
       break;
     default:
       image = "clear sky";
+      cityName = "Madrid";
+      cityNumber = "MAD";
   }
 
   const pexel = new Pexel(image);
@@ -100,7 +114,7 @@ function addContent() {
       }
   )
 
-  const flight = new Flight(image);
+  const flight = new Flight(cityNumber);
 
   flight.getFlight()
 
