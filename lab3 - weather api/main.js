@@ -47,8 +47,6 @@ function success(position) {
             const currentTemp = results.data[0].temp;
             console.log(currentWeather, currentTemp);
            
-            
-
             localStorage.setItem('weather', JSON.stringify(results));
             
           })
@@ -63,7 +61,10 @@ function addContent() {
   const weatherCode = weatherData.data[0].weather.code;
 
   const currentTemp = weatherData.data[0].temp;
-  document.querySelector('.above').innerHTML = currentWeather + " " + currentTemp + "°C";
+ 
+  const icon = weatherData.data[0].weather.icon;
+  document.querySelector('.above').innerHTML = currentWeather + "<br> " + currentTemp + "°C";
+  document.querySelector('.icon').innerHTML = `<img src="https://www.weatherbit.io/static/img/icons/${icon}.png" width="100px" alt="weather icon">`;
 
   switch(weatherCode) {
     case 200||201||202||230||231||232:
