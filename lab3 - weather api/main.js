@@ -1,23 +1,47 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+import Weather from './src/weather';
 
-setupCounter(document.querySelector('#counter'))
+
+let check = () =>{
+  
+    if (localStorage.getItem('time') == null) {
+        localStorage.setItem('time', Date.now());
+        navigator.geolocation.getCurrentPosition(success, error);
+    } else {
+        let time = localStorage.getItem('time');
+        let timeNow = Date.now();
+        let timeDiff = timeNow - time;
+        let timeDiffHours = timeDiff / 1000 / 60 / 60;
+        if (timeDiffHours > 1) {
+            localStorage.setItem('time', Date.now());
+            navigator.geolocation.getCurrentPosition(success, error);
+        } else {
+            console.log("You have already set your location in the last hour");
+        }
+    }
+  }
+
+check();
+
+function success(position) {
+
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+    console.log(lat, lon);
+    const weather = new Weather(lat, lon);
+    weather.getWeather()
+        .then(results => {
+            console.log(results);
+           
+            const currentWeather = results.data[0].weather.description;
+            const currentTemp = results.data[0].temp;
+            console.log(currentWeather, currentTemp);
+
+            localStorage.setItem('weather', JSON.stringify(results));
+    })
+}
+
+function error() {
+    alert('Unable to retrieve your location');
+}
