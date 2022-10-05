@@ -95,3 +95,12 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.ad{
+  width: 336px;
+  height: 280px;
+  background-color: #5c5c5c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
