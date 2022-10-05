@@ -5,7 +5,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: black;
   background-color: #242424;
 
   font-synthesis: none;
@@ -103,4 +103,45 @@ button:focus-visible {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  background-size: cover;
+
 }
+.backdrop{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/public/backdrop.png');
+  background-size: cover;
+  background-position:  0px -25px;
+
+
+}
+.above{
+  background-color: #70CBF4;
+  color: #092A5E;
+  position: absolute;
+  top: 25%;
+  left: 0;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5rem;
+  z-index: 5;
+  
+}
+.icon{
+
+  position: absolute;
+  top: 45%;
+  left: 0;
+  width: 40px;
+}
+
+
