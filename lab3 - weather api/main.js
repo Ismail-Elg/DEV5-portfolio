@@ -117,6 +117,12 @@ function addContent() {
   const flight = new Flight(cityNumber);
 
   flight.getFlight()
-
+      .then(results => {
+          console.log(results);
+          const price = results.data[0].value;
+          console.log(price);
+          document.querySelector('.ticket').innerHTML = `<p>Go to <span class='city'>${cityName}</span> for only  <span class='price'>€${price}</span> </p>`;
+      }
+  )
   
 }
