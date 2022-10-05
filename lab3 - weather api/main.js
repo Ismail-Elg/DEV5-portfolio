@@ -68,9 +68,9 @@ function addContent() {
 
   switch(weatherCode) {
     case 200||201||202||230||231||232:
-      image = "Bhutan";
-      cityName = "Bhutan";
-      cityNumber = "PBH";
+      image = "Zurich";
+      cityName = "Zurich";
+      cityNumber = "ZRH";
       break;
     case 300||301||302||500||501||502||511||520||521||522:
       image = "hotel reception";
@@ -84,11 +84,11 @@ function addContent() {
       break;
     case 700||711||721||731||741||751||761||762||771||781:
       image = "beach";
-      cityName = "Kavalla";
-      cityNumber = "KVA";
+      cityName = "Mykonos";
+      cityNumber = "JMK";
       break;
     case 800:
-      image = "spain2";
+      image = "spain";
       cityName = "Madrid";
       cityNumber = "MAD";
       break;
