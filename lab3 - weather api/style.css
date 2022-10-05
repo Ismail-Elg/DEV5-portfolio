@@ -20,6 +20,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -49,9 +50,11 @@ h1 {
   padding: 1.5em;
   will-change: filter;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.vanilla:hover {
   filter: drop-shadow(0 0 2em #f7df1eaa);
 }
@@ -75,9 +78,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -88,15 +93,17 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
 }
 
-.ad{
+.ad {
   width: 336px;
   height: 280px;
   background-color: #5c5c5c;
@@ -105,9 +112,11 @@ button:focus-visible {
   align-items: center;
   position: relative;
   background-size: cover;
+  overflow: hidden;
 
 }
-.backdrop{
+
+.backdrop {
   position: absolute;
   top: 0;
   left: 0;
@@ -115,17 +124,18 @@ button:focus-visible {
   height: 100%;
   background-image: url('/public/backdrop.png');
   background-size: cover;
-  background-position:  0px -25px;
+  background-position: 0px -25px;
 
 
 }
-.above{
+
+.above {
 
   color: #092A5E;
   position: absolute;
   top: 18%;
   left: 0;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -135,20 +145,72 @@ button:focus-visible {
   padding: 0.5rem;
   z-index: 5;
   line-height: 2;
-  
+
 }
-.icon{
+
+.icon {
 
   position: absolute;
   top: 45%;
   left: 0;
   width: 40px;
 }
-.logo{
+
+.logo {
   position: absolute;
   top: 0;
   right: 0;
 
-  
+
 }
 
+.ticket {
+  position: absolute;
+  bottom: 25px;
+  right: -25px;
+  width: 60%;
+  height: 40%;
+  background-color: #D40E14;
+  background-size: cover;
+  background-position: 0px -25px;
+  z-index: 1;
+  border-radius: 25px;
+  animation: rotateSlightly 2s infinite;
+
+  color: #E2F3FE;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  padding-right: 2rem;
+}
+
+@keyframes rotateSlightly {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(10deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.ticket .city {
+  font-size: 2rem;
+}
+
+.ticket .price {
+  font-size: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 10px;
+  color: white;
+}
