@@ -8,11 +8,15 @@ let image = "";
 let cityNumber = "";
 let cityName = "";
 let check = () =>{
-  
+  addContent();
     if (localStorage.getItem('time') == null) {
         localStorage.setItem('time', Date.now());
         navigator.geolocation.getCurrentPosition(success, error);
-    
+  
+       
+
+
+
     } else {
         let time = localStorage.getItem('time');
         let timeNow = Date.now();
@@ -21,15 +25,14 @@ let check = () =>{
         if (timeDiffHours > 1) {
             localStorage.setItem('time', Date.now());
             navigator.geolocation.getCurrentPosition(success, error);
-         
+            
         } else {
             console.log("You have already set your location in the last hour");
         }
     }
-    addContent();
-
+  
   }
-
+ 
 check();
 
 function success(position) {
@@ -48,24 +51,27 @@ function success(position) {
             console.log(currentWeather, currentTemp);
            
             localStorage.setItem('weather', JSON.stringify(results));
-            
+            location.reload();
           })
+      
 }
 function error() {
     alert('Unable to retrieve your location');
 }
 
 function addContent() {
-  const weatherData = JSON.parse(localStorage.getItem('weather'));
-  const currentWeather = weatherData.data[0].weather.description;
-  const weatherCode = weatherData.data[0].weather.code;
-
-  const currentTemp = weatherData.data[0].temp;
  
-  const icon = weatherData.data[0].weather.icon;
-  document.querySelector('.above').innerHTML = currentWeather + "<br> " + currentTemp + "°C";
-  document.querySelector('.icon').innerHTML = `<img src="https://www.weatherbit.io/static/img/icons/${icon}.png" width="100px" alt="weather icon">`;
-
+  if (localStorage.getItem('weather') != null) {
+    const weatherData = JSON.parse(localStorage.getItem('weather'));
+    const currentWeather = weatherData.data[0].weather.description;
+    const weatherCode = weatherData.data[0].weather.code;
+  
+    const currentTemp = weatherData.data[0].temp;
+   
+    const icon = weatherData.data[0].weather.icon;
+    document.querySelector('.above').innerHTML = currentWeather + "<br> " + currentTemp + "°C";
+    document.querySelector('.icon').innerHTML = `<img src="https://www.weatherbit.io/static/img/icons/${icon}.png" width="100px" alt="weather icon">`;
+ 
   switch(weatherCode) {
     case 200||201||202||230||231||232:
       image = "Zurich";
@@ -124,5 +130,5 @@ function addContent() {
           document.querySelector('.ticket').innerHTML = `<p>Go to <span class='city'>${cityName}</span> for only  <span class='price'>€${price}</span> </p>`;
       }
   )
-  
+}  
 }
