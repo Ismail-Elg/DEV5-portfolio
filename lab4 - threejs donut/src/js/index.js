@@ -34,6 +34,33 @@ class Scene {
         this.createLights();
         this.addEvents();
         this.helpers();
+        THREE.DefaultLoadingManager.onStart = function (url, itemsLoaded, itemsTotal) {
+            console.log('Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
+    
+        };
+        THREE.DefaultLoadingManager.onLoad = () => {
+            console.log('Loading complete!');
+        };
+        THREE.DefaultLoadingManager.onProgress = function (url, itemsLoaded, itemsTotal) {
+            console.log('Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
+           
+            if (itemsLoaded === itemsTotal) {
+                gsap.to(".loader-border", {
+                    duration: 2,
+                    width: `${itemsLoaded / itemsTotal * 100}%`,
+                });
+            }
+
+            if (itemsLoaded / itemsTotal * 100 === 100) {
+                setTimeout(() => {
+                    document.querySelector('.loader-bottom').style.animation = 'down 1.5s ease-in forwards';
+                    document.querySelector('.loader-top').style.animation = 'up 1s ease-in forwards';
+                }, 1000);
+            }
+        };
+        THREE.DefaultLoadingManager.onError = function (url) {
+            console.log('There was an error loading ' + url);
+        };
     }
 
    
