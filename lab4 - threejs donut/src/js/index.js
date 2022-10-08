@@ -21,6 +21,7 @@ class Scene {
         this.renderer = new THREE.WebGLRenderer({
             canvas: document.querySelector(".webgl"),
             antialias: true,
+            alpha: true,
         });
 
         this.renderer.setSize(window.innerWidth, window.innerHeight);
