@@ -123,7 +123,14 @@ class Scene {
     }
 
     helpers() {
-    
+            this.scene.add(new THREE.GridHelper(10, 10));
+
+        this.scene.add(new THREE.AxesHelper(5));
+        this.spotLightHelper = new THREE.SpotLightHelper(this.spotLight);
+        this.scene.add(this.spotLightHelper);
+
+        this.pointLightHelper = new THREE.PointLightHelper(this.pointLight);
+        this.scene.add(this.pointLightHelper);
     }
 }
 
