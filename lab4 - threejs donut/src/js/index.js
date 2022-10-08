@@ -29,7 +29,10 @@ class Scene {
     }
 
     init() {
-        
+        this.createMesh();
+        this.createLights();
+        this.addEvents();
+        this.helpers();
     }
 
    
@@ -44,6 +47,7 @@ class Scene {
     addEvents() {
       
     }
+    
     run() {
     
     }
