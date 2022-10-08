@@ -27,6 +27,10 @@ class Scene {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
 
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    
+        this.stats = new Stats();
+        this.stats.showPanel(0);
+        document.body.appendChild(this.stats.dom);
     }
 
     init() {
@@ -107,7 +111,9 @@ class Scene {
     }
 
     run() {
+        this.stats.begin();
         this.render();
+        this.stats.end();
     }
 
     render() {
