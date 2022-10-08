@@ -26,7 +26,7 @@ class Scene {
 
         this.renderer.setSize(window.innerWidth, window.innerHeight);
 
-
+        this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     }
 
     init() {
@@ -63,6 +63,7 @@ class Scene {
     render() {
         requestAnimationFrame(this.run.bind(this));
         this.renderer.render(this.scene, this.camera);
+        this.controls.update();
     }
 
     onResize() {
