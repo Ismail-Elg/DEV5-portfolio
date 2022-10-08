@@ -29,7 +29,7 @@ class Scene {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
 
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    
+
         this.stats = new Stats();
         this.stats.showPanel(0);
         document.body.appendChild(this.stats.dom);
@@ -53,14 +53,14 @@ class Scene {
         // this.helpers();
         THREE.DefaultLoadingManager.onStart = function (url, itemsLoaded, itemsTotal) {
             console.log('Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
-    
+
         };
         THREE.DefaultLoadingManager.onLoad = () => {
             console.log('Loading complete!');
         };
         THREE.DefaultLoadingManager.onProgress = function (url, itemsLoaded, itemsTotal) {
             console.log('Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
-           
+
             if (itemsLoaded === itemsTotal) {
                 gsap.to(".loader-border", {
                     duration: 2,
@@ -80,7 +80,7 @@ class Scene {
         };
     }
 
-   
+
     createMesh() {
         const loader = new GLTFLoader();
         loader.load(
@@ -90,11 +90,11 @@ class Scene {
             (gltf) => {
                 this.donut = gltf.scene;
                 this.donut.scale.set(0.5, 0.5, 0.5);
-              
+
                 this.donut.rotation.x = Math.PI * 0.20;
                 this.donut.position.set(0, 0, 0);
                 this.donut.scale.set(0.5, 0.5, 0.5);
-     
+
                 this.donut.children[0].children[0].children[4].visible = false;
                 this.donut.children[0].children[0].children[0].material.color.set(0xFFD372);
                 this.donut.children[0].children[0].children[1].material.color.set(0xE72870);
@@ -109,13 +109,13 @@ class Scene {
             vertexShader,
             fragmentShader,
             uniforms: {
-              uTime: { value: 0.0 },
-              uTexture: { value: new THREE.TextureLoader().load('yellow.png') },
+                uTime: { value: 0.0 },
+                uTexture: { value: new THREE.TextureLoader().load('yellow.png') },
             },
             side: THREE.DoubleSide,
         });
         this.cloth = new THREE.Mesh(this.geometry, this.material);
-        this.cloth.position.set(0, -0.3, 0);   
+        this.cloth.position.set(0, -0.3, 0);
         this.cloth.rotation.x = Math.PI * -0.30;
         this.scene.add(this.cloth);
     }
@@ -126,7 +126,7 @@ class Scene {
 
         this.pointLight = new THREE.PointLight(0xffffff, 1, 0, 0.8, 0, 1);
         this.pointLight.position.set(0, 0, 5);
- 
+
         this.ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
         this.scene.add(this.ambientLight, this.pointLight, this.spotLight);
     }
@@ -149,6 +149,11 @@ class Scene {
         this.renderer.render(this.scene, this.camera);
         this.controls.update();
         this.material.uniforms.uTime.value = this.clock.getElapsedTime();
+
+
+        if (this.donut) {
+            this.donut.rotation.y += 0.01;
+        }
     }
 
     onResize() {
@@ -158,7 +163,7 @@ class Scene {
     }
 
     helpers() {
-            this.scene.add(new THREE.GridHelper(10, 10));
+        this.scene.add(new THREE.GridHelper(10, 10));
 
         this.scene.add(new THREE.AxesHelper(5));
         this.spotLightHelper = new THREE.SpotLightHelper(this.spotLight);
