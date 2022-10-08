@@ -32,6 +32,7 @@ body{
   top: 0;
   left: 0;
   z-index: 2;
+  animation: up 2s ease-in-out forwards;
 }
 .loader-top img{
   position: absolute;
@@ -47,6 +48,7 @@ body{
   height: 25px;
   background-color: #f7e200;
   z-index: -5;
+  
 }
 .loader-bottom{
   position: relative;
@@ -56,5 +58,22 @@ body{
   z-index: 1;
   bottom: 0;
   left: 0;
+  animation: down 2s ease-in-out forwards;
 
+}
+@keyframes up {
+  0%{
+    top: 0;
+  }
+  100%{
+    top: -100vh;
+  }
+}
+@keyframes down {
+  0%{
+    bottom: 0;
+  }
+  100%{
+    bottom: -100vh;
+  }
 }
