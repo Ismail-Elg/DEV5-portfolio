@@ -4,6 +4,8 @@ import Stats from "stats.js";
 import { gsap } from "gsap";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
+import vertexShader from "../shaders/vertex.glsl";
+import fragmentShader from "../shaders/fragment.glsl";
 
 class Scene {
     constructor() {
@@ -39,6 +41,8 @@ class Scene {
         this.controls.enablePan = false;
         this.controls.enableZoom = false;
         this.controls.enableDamping = true;
+
+        this.clock = new THREE.Clock();
 
     }
 
@@ -99,6 +103,21 @@ class Scene {
                 this.scene.add(this.donut);
             }
         );
+
+        this.geometry = new THREE.CircleGeometry(1, 60);
+        this.material = new THREE.ShaderMaterial({
+            vertexShader,
+            fragmentShader,
+            uniforms: {
+              uTime: { value: 0.0 },
+              uTexture: { value: new THREE.TextureLoader().load('yellow.png') },
+            },
+            side: THREE.DoubleSide,
+        });
+        this.cloth = new THREE.Mesh(this.geometry, this.material);
+        this.cloth.position.set(0, -0.3, 0);   
+        this.cloth.rotation.x = Math.PI * -0.30;
+        this.scene.add(this.cloth);
     }
 
     createLights() {
@@ -129,6 +148,7 @@ class Scene {
         requestAnimationFrame(this.run.bind(this));
         this.renderer.render(this.scene, this.camera);
         this.controls.update();
+        this.material.uniforms.uTime.value = this.clock.getElapsedTime();
     }
 
     onResize() {
