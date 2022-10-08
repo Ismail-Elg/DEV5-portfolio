@@ -38,12 +38,22 @@ class Scene {
 
    
     createMesh() {
-        //create a red box
-        const geometry = new THREE.BoxGeometry(1, 1, 1);
-        const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-        const mesh = new THREE.Mesh(geometry, material);
-        this.scene.add(mesh);
+        const loader = new GLTFLoader();
+        loader.load(
+            // resource URL
+            'donuttello.glb',
+            // called when the resource is loaded
+            (gltf) => {
+                this.donut = gltf.scene;
+                this.donut.scale.set(0.5, 0.5, 0.5);
+              
+                this.donut.rotation.x = Math.PI * 0.20;
+                this.donut.position.set(0, 0, 0);
+                this.donut.scale.set(0.5, 0.5, 0.5);
 
+                this.scene.add(this.donut);
+            }
+        );
     }
 
     createLights() {
