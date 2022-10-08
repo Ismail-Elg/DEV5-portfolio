@@ -37,6 +37,11 @@ class Scene {
 
    
     createMesh() {
+        //create a red box
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        const mesh = new THREE.Mesh(geometry, material);
+        this.scene.add(mesh);
 
     }
 
@@ -45,19 +50,24 @@ class Scene {
     }
 
     addEvents() {
-      
+        requestAnimationFrame(this.run.bind(this));
+        window.addEventListener("resize", this.onResize.bind(this), false);
+
     }
-    
+
     run() {
-    
+        this.render();
     }
 
     render() {
-       
+        requestAnimationFrame(this.run.bind(this));
+        this.renderer.render(this.scene, this.camera);
     }
 
     onResize() {
-    
+        this.camera.aspect = window.innerWidth / window.innerHeight;
+        this.camera.updateProjectionMatrix();
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
     }
 
     helpers() {
