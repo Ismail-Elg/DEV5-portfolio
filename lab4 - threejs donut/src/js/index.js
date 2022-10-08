@@ -77,6 +77,11 @@ class Scene {
                 this.donut.rotation.x = Math.PI * 0.20;
                 this.donut.position.set(0, 0, 0);
                 this.donut.scale.set(0.5, 0.5, 0.5);
+     
+                this.donut.children[0].children[0].children[4].visible = false;
+                this.donut.children[0].children[0].children[0].material.color.set(0xFFD372);
+                this.donut.children[0].children[0].children[1].material.color.set(0xE72870);
+                this.donut.children[0].children[0].children[2].material.color.set(0xE72870);
 
                 this.scene.add(this.donut);
             }
@@ -86,14 +91,14 @@ class Scene {
     createLights() {
         this.spotLight = new THREE.SpotLight(0xffffff, 1, 0, 0.8, 0, 1);
         this.spotLight.position.set(0, 0, -5);
-        
+
         this.pointLight = new THREE.PointLight(0xffffff, 1, 0, 0.8, 0, 1);
         this.pointLight.position.set(0, 0, 5);
  
         this.ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
         this.scene.add(this.ambientLight, this.pointLight, this.spotLight);
-
     }
+
 
     addEvents() {
         requestAnimationFrame(this.run.bind(this));
