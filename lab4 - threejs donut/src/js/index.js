@@ -50,7 +50,7 @@ class Scene {
         this.createMesh();
         this.createLights();
         this.addEvents();
-        this.helpers();
+        // this.helpers();
         THREE.DefaultLoadingManager.onStart = function (url, itemsLoaded, itemsTotal) {
             console.log('Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
     
