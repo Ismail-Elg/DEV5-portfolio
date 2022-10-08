@@ -31,6 +31,15 @@ class Scene {
         this.stats = new Stats();
         this.stats.showPanel(0);
         document.body.appendChild(this.stats.dom);
+
+        this.controls.minPolarAngle = Math.PI * 0.5;
+        this.controls.maxPolarAngle = Math.PI * 0.5;
+        this.controls.minAzimuthAngle = -Math.PI * 0.5;
+        this.controls.maxAzimuthAngle = Math.PI * 0.5;
+        this.controls.enablePan = false;
+        this.controls.enableZoom = false;
+        this.controls.enableDamping = true;
+
     }
 
     init() {
