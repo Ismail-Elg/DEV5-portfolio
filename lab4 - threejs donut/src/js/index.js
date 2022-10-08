@@ -84,6 +84,14 @@ class Scene {
     }
 
     createLights() {
+        this.spotLight = new THREE.SpotLight(0xffffff, 1, 0, 0.8, 0, 1);
+        this.spotLight.position.set(0, 0, -5);
+        
+        this.pointLight = new THREE.PointLight(0xffffff, 1, 0, 0.8, 0, 1);
+        this.pointLight.position.set(0, 0, 5);
+ 
+        this.ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+        this.scene.add(this.ambientLight, this.pointLight, this.spotLight);
 
     }
 
