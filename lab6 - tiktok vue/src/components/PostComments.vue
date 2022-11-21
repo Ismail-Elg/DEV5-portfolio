@@ -24,12 +24,14 @@
     <p>{{message.text}}</p>
    </div>
 </div>
+<input type="text" v-model="newMessage" @keyup.enter="addMessage">
+<button @click="addMessage">Add Message</button>
 </template>
 
 <style scoped>
   .messages{
     display: flexbox;
-    height: 65vh;
+    height: 60vh;
     overflow-y: scroll;
   }
   .messages::-webkit-scrollbar {
@@ -48,4 +50,25 @@
   background: #555; 
 }
 
+
+input{
+  width: 65%;
+  height: 5vh;
+  border: none;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+button{
+  width: 25%;
+  height: 5vh;
+  border: none;
+  border-radius: 5px;
+  margin: 0px 20px;
+  background-color: #00b4d8;
+  color: white;
+  cursor: pointer;
+}
 </style>
