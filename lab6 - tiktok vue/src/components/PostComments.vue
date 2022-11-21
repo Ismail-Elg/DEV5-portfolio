@@ -1,5 +1,9 @@
 <script setup>
- import { ref, onMounted } from 'vue';
+ import { ref, reactive, onMounted } from 'vue';
+
+
+ //create reactive list of comments
+    let messages = reactive({messages: []});
 
 
 
@@ -8,22 +12,40 @@
         fetch(api_url)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-             
-
-            });
-
-      
+                messages.messages = data;
+            });   
    });
 </script>
 
 <template>
-    <ul>
-        <li>{{user}}</li>
-        <li>{{text}}</li>
-    </ul>
+<div class="messages">
+   <div v-for="message in messages.messages">
+    <h3>{{message.user}}</h3>
+    <p>{{message.text}}</p>
+   </div>
+</div>
 </template>
 
 <style scoped>
-  
+  .messages{
+    display: flexbox;
+    height: 65vh;
+    overflow-y: scroll;
+  }
+  .messages::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 15px;
+}
+.messages::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 15px;
+}
+.messages::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 15px;
+}
+.messages::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
 </style>
