@@ -1,4 +1,34 @@
 <script setup>
+ import { ref, reactive, onMounted } from 'vue';
+
+ let src = ref('');
+ let videos = reactive({videos: []});
+ let animation = ref('u--slideDown');
+
+    onMounted(() => {
+        // let api_url = "https://app.fakejson.com/q/Dt6soyE2?token=J8LA1-xpV4FBoiU5vS0n4Q";
+        let api_url = "http://127.0.0.1:5173/tiktok.json";
+        fetch(api_url)
+            .then(response => response.json())
+            .then(data => {
+                src.value = data.videos[0].video;
+                videos.videos = data.videos;
+            });
+   });
+   
+   const nextVideo = () => {
+
+        animation.value = 'u--slideUp';
+        setTimeout(() => {
+            animation.value = 'u--slideUp';
+        }, 1000);
+        src.value = videos.videos[1].video;
+       
+   }
+
+
+
+
 
 </script>
 
