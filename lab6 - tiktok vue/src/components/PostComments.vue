@@ -14,7 +14,14 @@
    });
 
    const addComments = () =>{
-    let api = "https://lab5-p379.onrender.com/api/v1/messages";
+    if (document.getElementById("message").value == ""){
+        document.getElementById("message").style.border = "2px solid red";
+        document.getElementById("message").placeholder = "Missing comment";
+    }
+    else{
+        document.getElementById("message").style.border = "2px solid green";
+        document.getElementById("message").placeholder = "Add a comment";
+        let api = "https://lab5-p379.onrender.com/api/v1/messages";
     let user = "SpongeBob";
     let text = document.getElementById("message").value;
     let data = {user, text};
@@ -36,13 +43,14 @@
     messages.messages.push(data);
 
     document.getElementById("message").value = "";
+    }
    }
 
 </script>
 
 <template>
 <div class="messages">
-   <div v-for="message in messages.messages" >
+<div v-for="message in messages.messages.slice().reverse()" >
     <h3>{{message.user}}</h3>
     <p>{{message.text}}</p>
    </div>
