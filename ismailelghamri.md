@@ -11,4 +11,5 @@ This is my repository that will hold all my lab projects 😗
 ✔️| [Lab3](https://github.com/Ismail-Elg/DEV5-portfolio/tree/main/lab3%20-%20weather%20api) + [Tui Ad Preview](https://tui-ad.netlify.app/) | Tui Advertisement
 ✔️| [Lab4](https://github.com/Ismail-Elg/DEV5-portfolio/tree/main/lab4%20-%20threejs%20donut) + [Preview](https://donut-lab5.netlify.app/) + [First Demo](https://donut-config.netlify.app/) + [Second Demo](https://donut-builder.netlify.app/) | Three js Donut
 ✔️| [Lab5](https://github.com/Ismail-Elg/DEV5-lab5) + [Lab5 Tester](https://codepen.io/ismailelg1/pen/BaxgyVG) + [API Link](https://lab5-p379.onrender.com/) | Node.js API
-❌| Lab6 | Soon..
+✔️| [Lab6](https://github.com/Ismail-Elg/DEV5-portfolio/tree/main/lab6%20-%20tiktok%20vue) + [Live Link](https://toktik-lab6.netlify.app/) | TikTok Vue
+❌| Lab7 | Soon..
