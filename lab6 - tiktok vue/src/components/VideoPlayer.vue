@@ -7,7 +7,7 @@
 
     onMounted(() => {
         // let api_url = "https://app.fakejson.com/q/Dt6soyE2?token=J8LA1-xpV4FBoiU5vS0n4Q";
-        let api_url = "http://127.0.0.1:5173/tiktok.json";
+        let api_url = "https://toktik-lab6.netlify.app/tiktok.json";
         fetch(api_url)
             .then(response => response.json())
             .then(data => {
